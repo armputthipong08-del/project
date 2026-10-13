@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@layer base {
+  html {
+    /* 16px บนมือถือ → ประมาณ 18px ที่จอ 1366 → ประมาณ 20px ที่จอ 1920 → สูงสุด 24px ที่จอ 4K */
+    font-size: clamp(16px, 0.9rem + 0.3vw, 24px);
+  }
+}
