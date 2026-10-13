@@ -1,0 +1,307 @@
+/* ===== สไตล์เดิมของคุณ (ขนาดและหน้าตาคงเดิมทั้งหมด) ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+    color: #222;
+}
+.container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 20px;
+}
+.topbar {
+    background: #1e293b;
+    color: white;
+    padding: 18px 25px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.profile-wrap {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.profile-wrap img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 20px 0 30px;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.card strong {
+    display: block;
+    color: #475569;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.card span {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0f172a;
+}
+.panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+h2 {
+    margin-top: 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+th, td {
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+th {
+    background: #f8fafc;
+}
+input, select, button {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button.delete {
+    background: #dc2626;
+}
+.message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    background: #dcfce7;
+    color: #166534;
+    margin: 15px 0;
+    font-weight: bold;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: end;
+}
+.filter-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.small-form {
+    margin-top: 8px;
+}
+.small-form input {
+    width: 120px;
+}
+.muted {
+    color: #64748b;
+    font-size: 14px;
+}
+a {
+    color: #f8fafc;
+    text-decoration: none;
+}
+
+/* ===== ส่วนที่เพิ่ม: รูปพื้นหลัง + กรอบสีขาวอ่อน + เมนูงานด้านขวา ===== */
+
+html { scroll-behavior: smooth; }
+
+/* รูปพื้นหลังของหน้า (เปลี่ยนรูปได้ที่ url(...)) */
+body.admin-body {
+    background: #f4f6f9 url("images/bg.jpg") center / cover no-repeat fixed;
+}
+@media (hover: none) {
+    body.admin-body { background-attachment: scroll; }   /* มือถือ: fixed มักกระตุก */
+}
+
+/* กรอบสี่เหลี่ยมสีขาวอ่อน (ใช้คู่กับ .container ขนาดเดิม) */
+.admin-shell {
+    background: rgba(255, 255, 255, .88);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .15);
+}
+
+/* เมนูซ้าย + เนื้อหากลาง + เมนูงานขวา */
+.admin-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.admin-main {
+    flex: 1 1 0;
+    min-width: 0;                 /* ให้ตารางเลื่อนในกรอบตัวเองได้ */
+}
+.admin-main > * { scroll-margin-top: 16px; }
+.admin-main .stats { margin-top: 0; }
+.admin-main .edit-profile {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Menu bar ฝั่งซ้าย: เมนูหน้าต่างๆ + Setting อยู่ล่างสุด */
+.menubar {
+    flex: 0 0 190px;
+    position: sticky;
+    top: 16px;
+    height: calc(100vh - 32px);
+    max-height: 640px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 12px;
+    box-sizing: border-box;
+    background: #1e293b;
+    border-radius: 12px;
+}
+.menubar nav { display: flex; flex-direction: column; gap: 6px; }
+.menubar nav a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #e2e8f0;
+}
+.menubar nav a:hover { background: #334155; color: #fff; }
+.menubar nav a.active { background: #334155; color: #fff; }
+.menubar-bottom { border-top: 1px solid #334155; padding-top: 12px; }
+.menubar nav a.logout { color: #fca5a5; }
+
+/* เมนูงาน ฝั่งขวา */
+.taskpanel {
+    flex: 0 0 280px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+.taskpanel h3 { margin: 0 0 4px; font-size: 18px; color: #0f172a; }
+.taskpanel h4 { margin: 20px 0 8px; font-size: 15px; }
+.task-form label { display: block; margin: 10px 0 4px; font-size: 14px; }
+.task-form label.check { display: flex; gap: 6px; align-items: center; }
+.task-form input:not([type="checkbox"]),
+.task-form select,
+.task-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+}
+.task-form button { width: 100%; margin-top: 12px; padding: 10px; }
+.task-list { list-style: none; margin: 0; padding: 0; }
+.task-list li { padding: 8px 0; border-top: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 2px; font-size: 14px; }
+
+/* ตารางกว้างเกินกรอบ ให้เลื่อนซ้ายขวาในกรอบตัวเอง */
+.table-scroll { overflow-x: auto; }
+
+/* จอเล็ก: ซ้อนเป็นแถวเดียว (เมนูซ้ายขึ้นบน, เมนูงานลงล่าง) */
+@media (max-width: 1100px) {
+    .admin-layout { flex-direction: column; }
+    .menubar { position: static; height: auto; max-height: none; width: 100%; flex: none; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .menubar nav { flex-direction: row; flex-wrap: wrap; }
+    .menubar-bottom { border-top: 0; padding-top: 0; }
+    .admin-main, .taskpanel { width: 100%; flex: none; }
+}
+
+/* ===== การ์ดโปรไฟล์ (หน้า admin) ===== */
+.profile-card { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.profile-card-img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 3px solid #e2e8f0; }
+.profile-card-info { flex: 1 1 220px; min-width: 0; }
+.profile-card-info h2 { margin: 0 0 4px; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.badge { background: #f1f5f9; color: #334155; border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.badge-admin { background: #dbeafe; color: #1e3a8a; font-weight: bold; }
+.btn-edit { background: #0f172a; color: #fff; padding: 10px 18px; border-radius: 10px; }
+#edit-profile-form { margin-top: 20px; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+
+/* ===== หน้ารายชื่อสมาชิก ===== */
+.member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+.member-card { display: flex; gap: 12px; align-items: center; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; }
+.member-card img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex: none; }
+.member-card strong { display: block; overflow-wrap: anywhere; }
+.member-card .muted { overflow-wrap: anywhere; }
+
+/* การ์ดโปรไฟล์ (หน้า admin) */
+.profile-card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+.profile-card-head { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.profile-card-img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid #e2e8f0; }
+.profile-card-info h2 { margin: 0 0 4px; font-size: 22px; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.badge { background: #f1f5f9; color: #334155; border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.badge-admin { background: #dbeafe; color: #1e3a8a; font-weight: bold; }
+.profile-edit { margin-top: 16px; }
+.profile-edit form { margin-top: 16px; }
+
+/* ชื่อ + ปุ่มแก้ไขโปรไฟล์ อยู่บรรทัดเดียวกัน */
+.profile-name-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.profile-name-row h2 { margin: 0; font-size: 22px; }
+.btn-edit { background: #1e293b; color: #fff; padding: 8px 16px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+.btn-edit:hover { background: #334155; }
+.profile-edit[hidden] { display: none; }
+
+/* ปุ่มแก้ไขโปรไฟล์อยู่บรรทัดเดียวกับชื่อ */
+.profile-card-title { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.profile-card-title h2 { margin: 0; font-size: 22px; }
+.btn-edit { background: #1e293b; color: #fff; border: none; border-radius: 10px; padding: 8px 16px; font-weight: bold; cursor: pointer; }
+.btn-edit:hover { background: #334155; }
+.profile-edit-form { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+.profile-edit-form[hidden] { display: none; }
+
+/* ปุ่มแก้ไขโปรไฟล์ในแถบด้านบน (สีเข้ม) */
+.topbar-btn { color: #fff; border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 8px 18px; font-weight: bold; }
+.topbar-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* ปุ่มแก้ไขโปรไฟล์ ชิดขวาสุดของการ์ดโปรไฟล์ */
+a.btn-edit { display: inline-block; text-decoration: none; }
+.profile-card-head .btn-edit { margin-left: auto; }
+
+/* ปุ่มแก้ไขโปรไฟล์ชิดขวาสุด: ให้ส่วนข้อมูลขยายเต็มพื้นที่ที่เหลือ */
+.profile-card-head { flex-wrap: nowrap; }
+.profile-card-info { flex: 1 1 auto; min-width: 0; }
+.profile-card-head .btn-edit { margin-left: auto; flex: 0 0 auto; }
+
+/* งานล่าสุด: กดแล้วไปหน้า Kanban */
+.task-link { display: flex; flex-direction: column; gap: 2px; color: #0f172a; text-decoration: none; }
+.task-link:hover strong { color: #2563eb; }
+
+@media (max-width: 600px) { .profile-card-head { flex-wrap: wrap; } }

@@ -1,0 +1,74 @@
+/* admin-layout.css — เมนูงานด้านข้าง + กรอบสีขาวอ่อน + รูปพื้นหลัง
+   ลิงก์ไว้ต่อจาก style.css ใน admin.php (ต้องโหลดทีหลัง) */
+
+html { scroll-behavior: smooth; }
+
+/* รูปพื้นหลังของหน้า (เปลี่ยนรูปได้ที่ url(...)) */
+body.admin-body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(12px, 3vw, 32px);
+  background: #e5e7eb url("images/bg.jpg") center / cover no-repeat fixed;
+}
+@media (hover: none) {
+  body.admin-body { background-attachment: scroll; }   /* มือถือ: fixed มักกระตุก */
+}
+
+/* กรอบสี่เหลี่ยมสีขาวอ่อนครอบทั้งหน้า */
+.admin-shell {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: clamp(12px, 2vw, 24px);
+  background: rgba(255, 255, 255, .88);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .15);
+  backdrop-filter: blur(4px);
+}
+.admin-shell .topbar { border-radius: 12px; margin-bottom: 16px; }
+
+/* โครงสองฝั่ง: เมนูซ้าย + เนื้อหาขวา (สลับฝั่งเมนูได้ด้วย flex-direction: row-reverse) */
+.admin-layout { display: flex; gap: 20px; align-items: flex-start; }
+
+.sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 16px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+}
+.sidebar h3 { margin: 0 0 12px; font-size: 1.05rem; }
+.sidebar nav { display: flex; flex-direction: column; gap: 6px; }
+.sidebar nav a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #1f2937;
+  text-decoration: none;
+}
+.sidebar nav a:hover { background: #eff6ff; color: #2563eb; }
+.sidebar nav a.logout { margin-top: 8px; color: #dc2626; }
+.sidebar nav a.logout:hover { background: #fef2f2; color: #dc2626; }
+
+.admin-main { flex: 1 1 0; min-width: 0; }
+.admin-main > * { scroll-margin-top: 16px; }
+.admin-main .edit-profile {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+}
+
+/* ตารางกว้างเกินจอ ให้เลื่อนซ้ายขวาในกรอบตัวเอง */
+.table-scroll { overflow-x: auto; }
+
+/* จอแคบ: เมนูย้ายขึ้นไปอยู่แถวบน */
+@media (max-width: 900px) {
+  .admin-layout { flex-direction: column; }
+  .sidebar { flex: none; width: 100%; position: static; }
+  .sidebar nav { flex-direction: row; flex-wrap: wrap; }
+  .sidebar nav a.logout { margin-top: 0; }
+}

@@ -1,0 +1,95 @@
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;                         /* ไม่โดนแถบเบราว์เซอร์บนมือถือบัง */
+  display: grid; place-items: center;
+  font-family: sans-serif;
+  padding: clamp(12px, 4vw, 40px);            /* ขอบรอบกล่อง ปรับตามจอ */
+  background: #f3f4f6 url("images/bg.jpg") center / cover no-repeat fixed;
+}
+
+/* มือถือ/แท็บเล็ต: background fixed มักกระตุกหรือไม่ขยายเต็ม จึงใช้แบบเลื่อนตามหน้า */
+@media (hover: none) {
+  body { background-attachment: scroll; }
+}
+
+img { max-width: 100%; height: auto; }
+
+.card {
+  position: relative; overflow: hidden; isolation: isolate;
+  width: 100%;
+  max-width: clamp(340px, 42vw, 560px);       /* จอเล็ก 340px -> จอใหญ่สุด 560px */
+  padding: clamp(20px, 4vw, 40px);
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/KMITL.png") center / 90% no-repeat;
+  opacity: .08;
+  pointer-events: none;
+  z-index: -1;
+}
+h1 {
+  margin: 0 0 clamp(18px, 3vw, 28px);
+  font-size: clamp(22px, 1.1rem + 1.2vw, 34px);
+  text-align: center;
+}
+
+/* Form */
+.field { margin-bottom: clamp(14px, 2vw, 20px); }
+label { display: block; margin-bottom: 6px; font-size: clamp(14px, 0.85rem + 0.25vw, 17px); }
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 14px) 12px;
+  font-size: clamp(16px, 1rem + 0.2vw, 19px); /* ไม่ต่ำกว่า 16px กัน iOS ซูมเองตอนแตะช่อง */
+  border: 1px solid #d1d5db; border-radius: 8px;
+}
+input:focus { outline: 2px solid #3b82f6; border-color: transparent; }
+.field.error input { border-color: #ef4444; }
+.msg { color: #ef4444; font-size: clamp(13px, 0.8rem + 0.2vw, 15px); margin-top: 4px; min-height: 16px; }
+
+/* Buttons */
+button.submit {
+  width: 100%;
+  padding: clamp(12px, 1.6vw, 16px);
+  font-size: clamp(16px, 1rem + 0.2vw, 19px);
+  color: #fff; margin-top: 12px;
+  background: #2563eb; border: 0; border-radius: 8px; cursor: pointer;
+}
+button.submit:hover { background: #1d4ed8; }
+button.submit:disabled { opacity: .6; cursor: not-allowed; }
+
+.result { text-align: center; margin-top: 16px; font-size: clamp(14px, 0.85rem + 0.25vw, 17px); }
+.switch { text-align: center; margin-top: 20px; font-size: clamp(14px, 0.85rem + 0.25vw, 17px); }
+.switch a, .row a { color: #3b82f6; text-decoration: none; }
+
+/* เฉพาะหน้า login */
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 4.5rem; }     /* กันตัวอักษรรหัสผ่านทับปุ่ม แสดง/ซ่อน */
+.toggle {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  background: none; border: 0; cursor: pointer;
+  font-size: clamp(13px, 0.8rem + 0.2vw, 15px); color: #6b7280;
+}
+.row {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: clamp(14px, 0.85rem + 0.25vw, 17px); margin-bottom: 8px;
+}
+
+/* เฉพาะหน้า register */
+.strength { height: 4px; background: #e5e7eb; border-radius: 2px; margin-top: 6px; overflow: hidden; }
+.strength div { height: 100%; width: 0; transition: width .2s, background .2s; }
+.terms { display: flex; gap: 8px; align-items: center; font-size: clamp(14px, 0.85rem + 0.25vw, 17px); margin-bottom: 4px; }
+.terms label { margin: 0; font-size: inherit; }
+
+/* จอแคบมาก (มือถือเล็ก) */
+@media (max-width: 400px) {
+  .card { padding: 20px; border-radius: 10px; }
+}
